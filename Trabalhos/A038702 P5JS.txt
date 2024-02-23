@@ -1,0 +1,126 @@
+var x = 0;
+var y = 1;
+var d = 50;
+var v=1;
+var estado = 0;
+
+
+function CriarObjetos() {
+  stroke(0, 204, 255);
+  fill(0);
+  rect(150, 0, 80);
+  line(120, 160, 120, 300);
+  line(230, 270, 230, 400);
+  line(330, 70, 330, 230);
+}
+
+function CriarStop() {
+  text("STOP",60,400);
+  fill(255,0,0);
+  textStyle(BOLD);
+}
+
+function CriarCirculo() {
+  circle(x, y, d);
+  line(x, y-25, x, y+25);
+  line(x-25, y, x+25, y);
+}
+
+function setup() {
+  createCanvas(400, 500);
+  x = 25;
+  y = height - 25 ;
+}
+
+function draw() {
+  background(0);
+    
+  CriarObjetos();
+  CriarCirculo();
+  if(estado == 0)
+  {
+    if(y == 25){
+      estado = 1;
+    }
+    y=y-v;
+  }
+  if(estado == 1)
+  {
+    if(x == 125) { estado = 2; }
+    x=x+v;
+  }
+  if(estado == 2)
+  {
+    if(y == 160 - 25){
+      estado = 3;
+    }
+    y=y+v;
+  }
+  if(estado == 3)
+  {
+    if(x == 120 + 25){
+      estado = 4;
+    }
+    x=x+v;
+  }
+  if(estado == 4)
+  {
+    if(y == 300 ){
+      estado = 5;
+    }
+    y=y+v;
+  }
+  if(estado == 5)
+  {
+    if(x == 230 - 25 ){
+      estado = 6;
+    }
+    x=x+v;
+  }
+  if(estado == 6)
+  {
+    if(y == 400 + 25 ){
+      estado = 7;
+    }
+    y =y+v;
+  }
+  if(estado == 7)
+  {
+    if(x == 230 + 25 ){
+      estado = 8;
+    }
+    x =x+v;
+  }
+  if(estado == 8)
+  {
+    if(y == 0 + 25 ){
+      estado = 9;
+    }
+    y =y-v;
+  }
+  if(estado == 9)
+  {
+    if(x == width - 25 ){
+      estado = 10;
+    }
+    x =x+v;
+  }
+  if(estado == 10)
+  {
+    if(y == height - 25 ){
+      estado = 11;
+    }
+    y =y+v;
+  }
+  if(estado == 11)
+  {
+    if(x == 25 ){
+      estado = 12;
+    }
+    x =x-v;
+  }
+  if(estado == 12)
+  {
+    CriarStop();
+  }
+}
